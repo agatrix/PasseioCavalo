@@ -9,9 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        PasseioCavalo cavalo = new PasseioCavalo(0,7);
-
-        PasseioCavalo.Movimento(cavalo);
+        PasseioCavalo cavalo = new PasseioCavalo(0,0);
+        //Coloque os valores inicias de onde o cavalo começa
+        
+        cavalo.movimentar();
     }
     
 }

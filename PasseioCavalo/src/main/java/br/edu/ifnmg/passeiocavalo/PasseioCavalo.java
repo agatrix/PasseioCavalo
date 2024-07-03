@@ -24,35 +24,34 @@ public class PasseioCavalo {
         
         this.contador = 1;
     }
-    
-    public static void Movimento(PasseioCavalo cavalo){
+
+    public void movimentar(){
         
-        for(cavalo.moveNumber = 0; cavalo.moveNumber < 8; cavalo.moveNumber++){
+        for(moveNumber = 0; moveNumber < 8; moveNumber++){
             //Verifica se está dentro do tabuleiro
-            if(cavalo.currentColumn+cavalo.vertical[cavalo.moveNumber] > -1
-               && cavalo.currentRow+cavalo.horizontal[cavalo.moveNumber] > -1
-               && cavalo.currentColumn+cavalo.vertical[cavalo.moveNumber] < 8
-               && cavalo.currentRow+cavalo.horizontal[cavalo.moveNumber] < 8)
+            if(currentColumn+vertical[moveNumber] > -1
+               && currentRow+horizontal[moveNumber] > -1
+               && currentColumn+vertical[moveNumber] < 8
+               && currentRow+horizontal[moveNumber] < 8)
             {
                 //vertifica se já passou pela casa
-                if(cavalo.tabuleiro
-/*Linha*/         [cavalo.currentRow+cavalo.horizontal[cavalo.moveNumber]]
-/*Coluna*/        [cavalo.currentColumn+cavalo.vertical[cavalo.moveNumber]]!=1)
+                if(tabuleiro
+/*Linha*/         [currentRow+horizontal[moveNumber]]
+/*Coluna*/        [currentColumn+vertical[moveNumber]]!=1)
                 {
                     
-                    System.out.println("["+cavalo.currentRow+"]["+cavalo.currentColumn+"]");
-                    cavalo.currentColumn += cavalo.vertical[cavalo.moveNumber];
-                    cavalo.currentRow += cavalo.horizontal[cavalo.moveNumber];
-                    cavalo.tabuleiro[cavalo.currentRow][cavalo.currentColumn] = 1;
-                    cavalo.contador+=1;
-                    cavalo.moveNumber=0;
+                    System.out.println("["+currentRow+"]["+currentColumn+"]");
+                    currentColumn += vertical[moveNumber];
+                    currentRow += horizontal[moveNumber];
+                    tabuleiro[currentRow][currentColumn] = 1;
+                    contador+=1;
+                    moveNumber=0;
                     
                 }
                 
             }
         }
-        System.out.println("["+cavalo.currentRow+"]["+cavalo.currentColumn+"]");
-        System.out.println(cavalo.contador);
+        System.out.println(contador);
     }
     
     
