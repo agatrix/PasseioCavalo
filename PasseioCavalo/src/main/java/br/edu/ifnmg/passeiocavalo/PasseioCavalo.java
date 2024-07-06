@@ -6,14 +6,14 @@ package br.edu.ifnmg.passeiocavalo;
  */
 public class PasseioCavalo {
 
-    int[][] tabuleiro = new int[8][8];
+    private int[][] tabuleiro = new int[8][8];
     //Por não passar nenhum valor, em Java inicializar int como 0;
     
-    int[] horizontal = {2,1,-1,-2,-2,-1,1,2};
-    int[] vertical = {-1,-2,-2,-1,1,2,2,1};
+    private int[] horizontal = {2,1,-1,-2,-2,-1,1,2};
+    private int[] vertical = {-1,-2,-2,-1,1,2,2,1};
     
-    int currentRow, currentColumn, moveNumber;
-    int contador; //Variavel para contar quantas casas o cavalo passou
+    private int currentRow, currentColumn, moveNumber;
+    private int contador; //Variavel para contar quantas casas o cavalo passou
     
     
     PasseioCavalo(int x, int y){ //Construtor x=horizontal y=vertical
@@ -24,7 +24,7 @@ public class PasseioCavalo {
         
         this.contador = 1;
     }
-    public boolean validarCasa(){
+    private boolean validarCasa(){
         //Verifica se está dentro do tabuleiro
         if(currentColumn+vertical[moveNumber] > -1
            && currentRow+horizontal[moveNumber] > -1
