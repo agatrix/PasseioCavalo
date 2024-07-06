@@ -24,34 +24,47 @@ public class PasseioCavalo {
         
         this.contador = 1;
     }
-
+    public boolean validarCasa(){
+        //Verifica se está dentro do tabuleiro
+        if(currentColumn+vertical[moveNumber] > -1
+           && currentRow+horizontal[moveNumber] > -1
+           && currentColumn+vertical[moveNumber] < 8
+           && currentRow+horizontal[moveNumber] < 8)
+        {
+            //vertifica se já passou pela casa
+            if(tabuleiro
+/*Linha*/     [currentRow+horizontal[moveNumber]]
+/*Coluna*/    [currentColumn+vertical[moveNumber]]==0)
+            {
+                return true;
+            }   
+        }
+        return false;
+    }
+    
+    public void printarTabuleiro(){
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                System.out.printf("[%2d]", tabuleiro[i][j]);
+            }
+            System.out.println("");
+        }
+    }
+    
     public void movimentar(){
         
-        for(moveNumber = 0; moveNumber < 8; moveNumber++){
-            //Verifica se está dentro do tabuleiro
-            if(currentColumn+vertical[moveNumber] > -1
-               && currentRow+horizontal[moveNumber] > -1
-               && currentColumn+vertical[moveNumber] < 8
-               && currentRow+horizontal[moveNumber] < 8)
-            {
-                //vertifica se já passou pela casa
-                if(tabuleiro
-/*Linha*/         [currentRow+horizontal[moveNumber]]
-/*Coluna*/        [currentColumn+vertical[moveNumber]]!=1)
-                {
-                    
-                    System.out.println("["+currentRow+"]["+currentColumn+"]");
-                    currentColumn += vertical[moveNumber];
-                    currentRow += horizontal[moveNumber];
-                    tabuleiro[currentRow][currentColumn] = 1;
-                    contador+=1;
-                    moveNumber=0;
-                    
-                }
-                
+        for(moveNumber = 0; moveNumber < 8; moveNumber++){  
+            if(validarCasa()){ 
+                currentColumn += vertical[moveNumber]; //Atualiza coluna
+                currentRow += horizontal[moveNumber];  //Atualiza Linha
+                contador+=1;                           //Adiciona contador
+                tabuleiro[currentRow][currentColumn] = contador;
+                moveNumber=0;
+                //Reseta o movimento, pra verificar as casas da nova posição
             }
         }
-        System.out.println(contador);
+        printarTabuleiro();
+        System.out.println("Casas visitadas: "+contador);
     }
     
     
